@@ -1,0 +1,20 @@
+# Alerting rules evaluated by Prometheus.
+groups:
+  - name: host-capacity
+    rules:
+      # Fire when any monitored filesystem is more than 85% full for 5 minutes.
+      # Excludes tmpfs/overlay pseudo-filesystems.
+      - alert: DiskSpaceHigh
+        expr: >
+          100 - (
+            node_filesystem_avail_bytes{fstype!~"tmpfs|overlay"}
+            / node_filesystem_size_bytes{fstype!~"tmpfs|overlay"} * 100
+          ) > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Disk over 85% on {{ $labels.host }} ({{ $labels.mountpoint }})"
+          description: >
+            Filesystem {{ $labels.mountpoint }} on {{ $labels.host }} is
+            {{ printf "%.1f" $value }}% full (threshold 85%).

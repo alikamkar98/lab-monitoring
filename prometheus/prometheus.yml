@@ -1,0 +1,29 @@
+# Global Prometheus configuration for the homelab monitoring stack.
+global:
+  scrape_interval: 15s        # how often to scrape targets
+  evaluation_interval: 15s    # how often to evaluate alert rules
+
+# Load alerting rules from this file.
+rule_files:
+  - /etc/prometheus/alert.rules.yml
+
+# Scrape configs: what to collect and from where.
+scrape_configs:
+  # Prometheus scraping itself.
+  - job_name: prometheus
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # node_exporter running in this stack (the Docker host).
+  # Add more lab VMs by installing node_exporter on them and listing
+  # their host:9100 addresses below.
+  - job_name: node
+    static_configs:
+      - targets:
+          - 'node_exporter:9100'
+        labels:
+          host: docker-host
+      # - targets: ['192.168.1.20:9100']
+      #   labels: { host: dc01 }
+      # - targets: ['192.168.1.30:9100']
+      #   labels: { host: ubuntu01 }
