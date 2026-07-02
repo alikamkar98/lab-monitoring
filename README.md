@@ -5,7 +5,8 @@ homelab, deployed with a single `docker compose up -d`. Grafana comes with the
 Prometheus datasource and a homelab dashboard already provisioned, plus one
 alert rule that fires when any disk exceeds 85% usage.
 
-![Grafana dashboard](screenshots/placeholder-grafana-dashboard.png)
+> _Screenshot of the provisioned Grafana dashboard to be added once the stack is
+> running against the lab VMs._
 
 ---
 
