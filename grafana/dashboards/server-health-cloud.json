@@ -445,7 +445,7 @@
           "legendFormat": "1m"
         },
         {
-          "refId": "A",
+          "refId": "B",
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
@@ -454,7 +454,7 @@
           "legendFormat": "5m"
         },
         {
-          "refId": "A",
+          "refId": "C",
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
@@ -770,7 +770,7 @@
           "legendFormat": "recv {{device}}"
         },
         {
-          "refId": "A",
+          "refId": "B",
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
@@ -836,7 +836,7 @@
           "legendFormat": "read {{device}}"
         },
         {
-          "refId": "A",
+          "refId": "B",
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
