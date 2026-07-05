@@ -5,14 +5,22 @@ homelab, deployed with a single `docker compose up -d`. Grafana comes with the
 Prometheus datasource and a homelab dashboard already provisioned, plus one
 alert rule that fires when any disk exceeds 85% usage.
 
-> **Live deployment:** This stack is running for real. An Ubuntu 24.04 LTS
+> **Live deployment:** This stack is running for real. An **Ubuntu 24.04 LTS**
 > server in my VMware homelab ships `node_exporter` metrics via **Grafana Alloy**
-> to **Grafana Cloud** (free tier), with a purpose-built **Server Health**
-> dashboard (CPU / memory / disk / uptime — see
-> [`grafana/dashboards/server-health-cloud.json`](grafana/dashboards/server-health-cloud.json))
-> and a disk > 85% alert. A public, read-only view of the live dashboard is
-> embedded on my portfolio site. The `docker compose` stack below is the
-> self-hosted equivalent of the same design.
+> to **Grafana Cloud** (free tier), with a purpose-built **13-panel Server Health
+> dashboard** — header stats (uptime, cores, RAM, disk size), CPU usage, CPU by
+> mode, load average, memory used %, memory/disk gauges, per-mount disk bars,
+> network throughput, and disk I/O — plus a **disk > 85% alert**. See
+> [`grafana/dashboards/server-health-cloud.json`](grafana/dashboards/server-health-cloud.json).
+> The dashboard is shared publicly (read-only) and linked from my portfolio site.
+> The `docker compose` stack below is the self-hosted equivalent of the same
+> design.
+
+> **Two ways this is deployed in this repo:**
+> 1. **Grafana Cloud (live):** Alloy on the Ubuntu host → Grafana Cloud, using
+>    [`grafana/dashboards/server-health-cloud.json`](grafana/dashboards/server-health-cloud.json).
+> 2. **Self-hosted (`docker compose up -d`):** Prometheus + Grafana +
+>    node_exporter on one host, using the provisioned config below.
 
 ---
 
