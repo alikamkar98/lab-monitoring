@@ -5,8 +5,14 @@ homelab, deployed with a single `docker compose up -d`. Grafana comes with the
 Prometheus datasource and a homelab dashboard already provisioned, plus one
 alert rule that fires when any disk exceeds 85% usage.
 
-> _Screenshot of the provisioned Grafana dashboard to be added once the stack is
-> running against the lab VMs._
+> **Live deployment:** This stack is running for real. An Ubuntu 24.04 LTS
+> server in my VMware homelab ships `node_exporter` metrics via **Grafana Alloy**
+> to **Grafana Cloud** (free tier), with a purpose-built **Server Health**
+> dashboard (CPU / memory / disk / uptime — see
+> [`grafana/dashboards/server-health-cloud.json`](grafana/dashboards/server-health-cloud.json))
+> and a disk > 85% alert. A public, read-only view of the live dashboard is
+> embedded on my portfolio site. The `docker compose` stack below is the
+> self-hosted equivalent of the same design.
 
 ---
 
